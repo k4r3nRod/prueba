@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suma de dos números</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #5b6478;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --border: #dbe3f0;
+      --result: #0f766e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #eaf2ff 0%, #f7f9fc 45%, #eefbf7 100%);
+      color: var(--text);
+    }
+
+    .card {
+      width: min(92vw, 420px);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.1);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+    }
+
+    p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    input {
+      width: 100%;
+      margin-top: 6px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 8px;
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      background: var(--primary-hover);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .result {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #ecfdf5;
+      color: var(--result);
+      font-size: 1.05rem;
+      font-weight: 700;
+      min-height: 52px;
+      display: grid;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Suma de dos números</h1>
+    <p>Escribe dos valores y presiona el botón para ver el resultado.</p>
+
+    <label>
+      Número 1
+      <input id="numero1" type="number" step="any" placeholder="Ejemplo: 10" />
+    </label>
+
+    <label>
+      Número 2
+      <input id="numero2" type="number" step="any" placeholder="Ejemplo: 5" />
+    </label>
+
+    <button id="btnSumar" type="button">Sumar</button>
+    <div id="resultado" class="result">Resultado: -</div>
+  </main>
+
+  <script>
+    const numero1 = document.getElementById('numero1');
+    const numero2 = document.getElementById('numero2');
+    const btnSumar = document.getElementById('btnSumar');
+    const resultado = document.getElementById('resultado');
+
+    function sumarNumeros() {
+      const valor1 = parseFloat(numero1.value);
+      const valor2 = parseFloat(numero2.value);
+
+      if (Number.isNaN(valor1) || Number.isNaN(valor2)) {
+        resultado.textContent = 'Resultado: ingresa dos números válidos.';
+        return;
+      }
+
+      const suma = valor1 + valor2;
+      resultado.textContent = `Resultado: ${suma}`;
+    }
+
+    btnSumar.addEventListener('click', sumarNumeros);
+
+    [numero1, numero2].forEach((input) => {
+      input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          sumarNumeros();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
