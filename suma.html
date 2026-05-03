@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Suma</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f4f8;
+    }
+
+    .calculator {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+      color: #333;
+      font-size: 1.5rem;
+    }
+
+    .input-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #357abd;
+    }
+
+    .result {
+      margin-top: 1.25rem;
+      font-size: 1.2rem;
+      color: #333;
+      min-height: 1.5rem;
+    }
+
+    .result span {
+      font-weight: bold;
+      color: #4a90e2;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Calculadora de Suma</h1>
+
+    <div class="input-group">
+      <label for="num1">Primer número</label>
+      <input type="number" id="num1" placeholder="0">
+    </div>
+
+    <div class="input-group">
+      <label for="num2">Segundo número</label>
+      <input type="number" id="num2" placeholder="0">
+    </div>
+
+    <button id="btnSumar">Sumar</button>
+
+    <div class="result" id="resultado"></div>
+  </div>
+
+  <script>
+    function sumar() {
+      const num1 = parseFloat(document.getElementById('num1').value) || 0;
+      const num2 = parseFloat(document.getElementById('num2').value) || 0;
+      const resultado = num1 + num2;
+
+      const contenedor = document.getElementById('resultado');
+      contenedor.textContent = 'Resultado: ';
+      const span = document.createElement('span');
+      span.textContent = resultado;
+      contenedor.appendChild(span);
+    }
+
+    document.getElementById('btnSumar').addEventListener('click', sumar);
+  </script>
+</body>
+</html>
